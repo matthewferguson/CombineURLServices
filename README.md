@@ -1,6 +1,6 @@
 # CombineURLServices
 
-iOS Code Challenge to demonstrate the use of Combine URL Services, API, Core Data, and Background processing within a Mobile REDUX Architecture.  Using Reducers the Data Flow will 
+iOS Code Challenge to demonstrate the use of Combine URL Services, API, Core Data, and Background processing within a Mobile REDUX Architecture.  Using Reducers and Core Data the Data Flow will be decoupled from the views.  Mobile REDUX Architecture using Core Data to decouple the data dependencies and open and running delegates.    
 
 Use Cases and UI/UX Specifications. 
 
@@ -13,6 +13,9 @@ Use Cases and UI/UX Specifications.
 
 
 Solution Details (WIP)
+
+- Mobile REDUX Architecture using Core Data to decouple the data dependencies and open and running delegates. 
+- The use of Reducers (REDUX) and Core Data to provide a Data Flow will decouple the struct views of SwiftUI. Allowing SwiftUI to be a temporary in memory view as intended. 
 
 Swift Packages installed within the Xcode 15 SPM:
 
