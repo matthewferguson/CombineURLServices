@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  CombineURLServices
 //
-//  Created by Matthew Ferguson on 10/17/23.
+//  Created by Matthew Ferguson 
 //
 
 import Foundation
@@ -23,19 +23,19 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         
         removeAllUserDataOnInitialize()
         
-        DataFlowFunnel.shared.addOperation(FetchAndDescribeDataOperation())
+        //DataFlowFunnel.shared.addOperation(FetchAndDescribeDataOperation())
         
         self.myReachability.startNotifier()
         
         if  self.myReachability.currentReachableId == kReachWWAN {
-            DataFlowFunnel.shared.addOperation(FetchAndDescribeDataOperation())
+            //DataFlowFunnel.shared.addOperation(FetchAndDescribeDataOperation())
         } else if self.myReachability.currentReachableId == kReachWiFi {
-            DataFlowFunnel.shared.addOperation(FetchAndDescribeDataOperation())
+           //DataFlowFunnel.shared.addOperation(FetchAndDescribeDataOperation())
         } else {
-            DataFlowFunnel.shared.addOperation(FetchAndDescribeDataOperation())
+            //DataFlowFunnel.shared.addOperation(FetchAndDescribeDataOperation())
         }
         
-        DataFlowFunnel.shared.addOperation(FetchAndDescribeDataOperation())
+        //DataFlowFunnel.shared.addOperation(FetchAndDescribeDataOperation())
         
         return true
     }
