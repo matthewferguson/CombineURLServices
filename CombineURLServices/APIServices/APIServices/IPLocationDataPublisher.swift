@@ -2,7 +2,7 @@
 //  IPLocationDataPublisher.swift
 //  CombineURLServices
 //
-//  Created by Matthew Ferguson on 11/21/23.
+//  Created by Matthew Ferguson 
 //
 
 import Foundation

@@ -88,7 +88,7 @@ class NetworkReachability : NSObject {
         }
         // BUZ install CRUD Operation
         DataFlowFunnel.shared.addOperation(UpdateReachabilityStatusOperation(newStatus: self.currentReachableId))
-        DataFlowFunnel.shared.addOperation(FetchAndDescribeDataOperation())
+        //DataFlowFunnel.shared.addOperation(FetchAndDescribeDataOperation())
     }
 
     
@@ -98,7 +98,7 @@ class NetworkReachability : NSObject {
         //dataController!.updateNetworkReachability(networkState: self.currentReachableId!)
         // BUZ install CRUD Operation
         DataFlowFunnel.shared.addOperation(UpdateReachabilityStatusOperation(newStatus: self.currentReachableId))
-        DataFlowFunnel.shared.addOperation(FetchAndDescribeDataOperation())
+        //DataFlowFunnel.shared.addOperation(FetchAndDescribeDataOperation())
     }
     
     

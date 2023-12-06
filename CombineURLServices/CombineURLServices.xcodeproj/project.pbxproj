@@ -154,6 +154,7 @@
 		160658202B02A13100FDBA7C /* IPGeoLocationModule */ = {
 			isa = PBXGroup;
 			children = (
+				168ECF8A2B2058080007E745 /* Reducers */,
 				160658242B02A1D200FDBA7C /* Services */,
 				160658232B02A1A600FDBA7C /* Models */,
 				160658222B02A17100FDBA7C /* ViewModel */,
@@ -289,6 +290,13 @@
 			path = Debug;
 			sourceTree = "<group>";
 		};
+		168ECF8A2B2058080007E745 /* Reducers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Reducers;
+			sourceTree = "<group>";
+		};
 		169D7FD62ADF891200E27E9B = {
 			isa = PBXGroup;
 			children = (
@@ -296,7 +304,6 @@
 				160659162B1D909F00FDBA7C /* CombineURLServicesPersistance */,
 				160658EA2B197A0100FDBA7C /* NetworkReachabilityModule */,
 				160658202B02A13100FDBA7C /* IPGeoLocationModule */,
-				16D350082B01BD8900422298 /* Reducers */,
 				16D34FF72B01994E00422298 /* APIServices */,
 				169D7FE12ADF891200E27E9B /* CombineURLServices */,
 				169D7FF72ADF891300E27E9B /* CombineURLServicesTests */,
@@ -370,13 +377,6 @@
 				160658D12B0F0A9300FDBA7C /* IPLocationService.swift */,
 			);
 			path = APIServices;
-			sourceTree = "<group>";
-		};
-		16D350082B01BD8900422298 /* Reducers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Reducers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
