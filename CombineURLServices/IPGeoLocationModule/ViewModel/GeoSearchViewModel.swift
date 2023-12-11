@@ -20,25 +20,23 @@ extension GeoSearchView
         @Published var managedIpGeoLocations: [IpGeoLocationGenericNode] = []
         @Published var ipAddressInput: String = ""
         
-        private static let decoder = JSONDecoder()
-        private let ipLocationService:IPLocationDataPublisher = IPLocationService()
-        var  cancellable = Set<AnyCancellable>()
+        private var refDataFlowFunnel:DataFlowFunnel = DataFlowFunnel.shared
     
-        fileprivate lazy var fetchBoatsRequestController: NSFetchedResultsController<IpGeoLocation> = {
-            let fetchRequestForUsers: NSFetchRequest<IpGeoLocation> = IpGeoLocation.fetchRequest()
+        fileprivate lazy var fetchIpGeoLocationRequestController: NSFetchedResultsController<IpGeoLocation> = {
+            let fetchIpGeoLocations: NSFetchRequest<IpGeoLocation> = IpGeoLocation.fetchRequest()
             
-            let sortDescriptor = NSSortDescriptor(key: "query", ascending:false)
-            fetchRequestForUsers.sortDescriptors = [sortDescriptor]
+            let sortDescriptor = NSSortDescriptor(key: "timestamp", ascending:false )
+            fetchIpGeoLocations.sortDescriptors = [sortDescriptor]
             
             //Initialize Fetched Results Controller
-            let fetchAllUsersRecordRequest = NSFetchedResultsController(
-                fetchRequest: fetchRequestForUsers,
+            let fetchIpGeoLocationRequest = NSFetchedResultsController(
+                fetchRequest: fetchIpGeoLocations,
                 managedObjectContext:DataFlowFunnel.shared.getPersistentContainerRef().viewContext,
                 sectionNameKeyPath: nil,
                 cacheName: nil)
             
-            fetchAllUsersRecordRequest.delegate = self
-            return fetchAllUsersRecordRequest
+            fetchIpGeoLocationRequest.delegate = self
+            return fetchIpGeoLocationRequest
         }()
         
         fileprivate lazy var fetchReachabilityStatusController: NSFetchedResultsController<ReachabilityStatus> = {
@@ -58,7 +56,11 @@ extension GeoSearchView
             return fetchAllReachabilityStatusRequest
         }()
 
+        
+        
+        
         func setupFetchControllers() {
+            
             do {
                 try self.fetchReachabilityStatusController.performFetch()
                 let statusCollection = self.fetchReachabilityStatusController.fetchedObjects!
@@ -74,18 +76,61 @@ extension GeoSearchView
             } catch {
                 // error popup?
                 let fetchError = error as NSError
-                print("GeoSearchView VM Unable to Perform Fetch Request: \(fetchError), \(fetchError.localizedDescription)")
+                print("GeoSearchView VM Unable to Perform fetchReachabilityStatusController: \(fetchError), \(fetchError.localizedDescription)")
+            }
+            
+            do {
+                try self.fetchIpGeoLocationRequestController.performFetch()
+                let ipGeoLocationCollection = self.fetchIpGeoLocationRequestController.fetchedObjects!
+                if ipGeoLocationCollection.count > 0 {
+                    // future check for timestamp refresh
+//                    if let networkReachMO = ipGeoLocationCollection.first {
+//                        
+//                    }
+                }
+            } catch {
+                // error popup?
+                let fetchError = error as NSError
+                print("GeoSearchView VM Unable to Perform fetchIpGeoLocationRequestController Request: \(fetchError), \(fetchError.localizedDescription)")
             }
         }
         
-        private func processSuccessfulIpGeoPacket(ipgeolocation: IPLocation) {
-            
-            if let message = ipgeolocation.message {
-                let ipLocNode = IpGeoLocationGenericNode(ipLocationItem: "message", value: message)
+        
+        public func requestIpGeoServices() {
+            DataFlowFunnel.shared.addOperation(CreateNetworkRequestGeoSearchViewOperation(newIpAddress: ipAddressInput, typeofrequest: String("iplookup")))
+        }
+
+        
+        private func processSuccessfulIpGeoPacket(ipgeolocation: IpGeoLocation) {
+
+            if let status = ipgeolocation.status {
+                if status == "fail" {
+                    let ipLocNode = IpGeoLocationGenericNode(ipLocationItem: "status", value: status)
+                        //load an operation
+                    self.managedIpGeoLocations.append(ipLocNode)
+                    
+                    if let message = ipgeolocation.message {
+                        let ipLocNode = IpGeoLocationGenericNode(ipLocationItem: "message", value: message)
+                        self.managedIpGeoLocations.append(ipLocNode)
+                    }
+                    
+                } else {
+                    let ipLocNode = IpGeoLocationGenericNode(ipLocationItem: "status", value: status)
+                    self.managedIpGeoLocations.append(ipLocNode)
+                }
+            } else {
+                var ipLocNode = IpGeoLocationGenericNode(ipLocationItem: "status", value: "failed")
+                self.managedIpGeoLocations.append(ipLocNode)
+                ipLocNode = IpGeoLocationGenericNode(ipLocationItem: "message", value: "Problem receiving service data")
                 self.managedIpGeoLocations.append(ipLocNode)
             }
-
+            
             if ipgeolocation.status != "fail" {
+                
+                if let message = ipgeolocation.message {
+                    let ipLocNode = IpGeoLocationGenericNode(ipLocationItem: "message", value: message)
+                    self.managedIpGeoLocations.append(ipLocNode)
+                }
                 
                 if let country = ipgeolocation.country {
                     let ipLocNode = IpGeoLocationGenericNode(ipLocationItem: "country", value: country)
@@ -122,15 +167,14 @@ extension GeoSearchView
                     self.managedIpGeoLocations.append(ipLocNode)
                 }
                 
-                if let lat = ipgeolocation.lat {
-                    let ipLocNode = IpGeoLocationGenericNode(ipLocationItem: "lat", value: String(lat))
-                    self.managedIpGeoLocations.append(ipLocNode)
-                }
+                let lat = ipgeolocation.lat
+                let ipLocNodeLAT = IpGeoLocationGenericNode(ipLocationItem: "lat", value: String(lat))
+                self.managedIpGeoLocations.append(ipLocNodeLAT)
                 
-                if let lon = ipgeolocation.lon {
-                    let ipLocNode = IpGeoLocationGenericNode(ipLocationItem: "lon", value: String(lon))
-                    self.managedIpGeoLocations.append(ipLocNode)
-                }
+                
+                let lon = ipgeolocation.lon
+                let ipLocNodeLON = IpGeoLocationGenericNode(ipLocationItem: "lon", value: String(lon))
+                self.managedIpGeoLocations.append(ipLocNodeLON)
                 
                 if let timezone = ipgeolocation.timezone {
                     let ipLocNode = IpGeoLocationGenericNode(ipLocationItem: "timezone", value: timezone)
@@ -148,46 +192,7 @@ extension GeoSearchView
                 }
             }
         }
-        
-        public func fetchIpGeoLocation() {
-                let queryUrl = URL(string: "http://ip-api.com/json/" + ipAddressInput)!
-                self.ipLocationService.publisher(url: queryUrl)
-                    .retry(2)
-                        // decode the response from tryMap into a custom data structure
-                    .decode(type: IPLocation.self, decoder: Self.decoder )
-                    .replaceError(with: IPLocation.error )
-                    .receive(on: DispatchQueue.main)
-                    .sink(receiveCompletion: {status in switch status {
-                            case .finished: 
-                                print("Completed");
-                            break
-                            case .failure(let error):
-                                print("Received error \(error)");
-                            break
-                            }
-                        },
-                          receiveValue: { ipgeolocation in
-                            //print("\n ------- fetchIpGeoLocation() Data received ------\n \(ipgeolocation.debugDescription)\n\n -------\n")
-                        
-                                if let status = ipgeolocation.status {
-                                    if status == "failed" {
-                                        let ipLocNode = IpGeoLocationGenericNode(ipLocationItem: "status", value: status)
-                                        self.managedIpGeoLocations.append(ipLocNode)
-                                    } else {
-                                        let ipLocNode = IpGeoLocationGenericNode(ipLocationItem: "status", value: status)
-                                        self.managedIpGeoLocations.append(ipLocNode)
-                                        self.processSuccessfulIpGeoPacket(ipgeolocation: ipgeolocation)
-                                    }
-                                } else {
-                                    var ipLocNode = IpGeoLocationGenericNode(ipLocationItem: "status", value: "failed")
-                                    self.managedIpGeoLocations.append(ipLocNode)
-                                    ipLocNode = IpGeoLocationGenericNode(ipLocationItem: "message", value: "Problem receiving service data")
-                                    self.managedIpGeoLocations.append(ipLocNode)
-                                }
-                        })
-                    .store(in: &self.cancellable)
-        }
-        
+          
         //MARK: - NSFetchedResultsControllerDelegate Supported Callback
         
         private func setNetworkStatus(to: Bool) -> Void {
@@ -211,6 +216,7 @@ extension GeoSearchView
                 case .insert:
                     switch anObject {
                         case let tempReachabilityStatusTerm as ReachabilityStatus:
+                            
                             let reachabilityStatus = tempReachabilityStatusTerm.status!
                             if reachabilityStatus == kReachWiFi {
                                 Task{ await setNetworkStatus(to: false) }
@@ -219,24 +225,28 @@ extension GeoSearchView
                             } else if reachabilityStatus == kUnReachable {
                                 Task{ await setNetworkStatus(to: true) }
                             }
-                            print(".insert : tempReachabilityStatusTerm.status! = " + reachabilityStatus)
+                            
+                        break
+                        case let insertedIpGeoLocation as IpGeoLocation:
+                            Task{
+                                await processSuccessfulIpGeoPacket(ipgeolocation: insertedIpGeoLocation)
+                            }
+                        break
                         default:
-                            break
+                        break
                     }
-                break; // .insert
+                break
                 // .delete ------------------------
                 case .delete:
-
-                    break;// .delete
+                break
                 // .update ------------------------
                 case .update:
-
-                    break; //.update
+                break
                 //  .move ------------------------
                 case .move:
-                    break; //.move
+                break
                 @unknown default:
-                    fatalError() //
+                    fatalError()
             }
         }
     }

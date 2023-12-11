@@ -69,6 +69,18 @@
 		169D80122ADF8CC800E27E9B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169D80112ADF8CC800E27E9B /* AppDelegate.swift */; };
 		169D80132ADF8CC800E27E9B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169D80112ADF8CC800E27E9B /* AppDelegate.swift */; };
 		169D80142ADF8CC800E27E9B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169D80112ADF8CC800E27E9B /* AppDelegate.swift */; };
+		16A041302B242508003B1D69 /* IPLocationDataReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A0412F2B242508003B1D69 /* IPLocationDataReducer.swift */; };
+		16A041312B242508003B1D69 /* IPLocationDataReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A0412F2B242508003B1D69 /* IPLocationDataReducer.swift */; };
+		16A041322B242508003B1D69 /* IPLocationDataReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A0412F2B242508003B1D69 /* IPLocationDataReducer.swift */; };
+		16A041342B242A18003B1D69 /* IPLocationDataReducer+CoreDataExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A041332B242A18003B1D69 /* IPLocationDataReducer+CoreDataExt.swift */; };
+		16A041352B242A18003B1D69 /* IPLocationDataReducer+CoreDataExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A041332B242A18003B1D69 /* IPLocationDataReducer+CoreDataExt.swift */; };
+		16A041362B242A18003B1D69 /* IPLocationDataReducer+CoreDataExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A041332B242A18003B1D69 /* IPLocationDataReducer+CoreDataExt.swift */; };
+		16A041382B263FAD003B1D69 /* CreateNetworkRequestGeoSearchViewOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A041372B263FAD003B1D69 /* CreateNetworkRequestGeoSearchViewOperation.swift */; };
+		16A041392B263FAD003B1D69 /* CreateNetworkRequestGeoSearchViewOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A041372B263FAD003B1D69 /* CreateNetworkRequestGeoSearchViewOperation.swift */; };
+		16A0413A2B263FAD003B1D69 /* CreateNetworkRequestGeoSearchViewOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A041372B263FAD003B1D69 /* CreateNetworkRequestGeoSearchViewOperation.swift */; };
+		16A0413C2B268FB2003B1D69 /* CreateIpGeoLocationOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A0413B2B268FB2003B1D69 /* CreateIpGeoLocationOperation.swift */; };
+		16A0413D2B268FB2003B1D69 /* CreateIpGeoLocationOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A0413B2B268FB2003B1D69 /* CreateIpGeoLocationOperation.swift */; };
+		16A0413E2B268FB2003B1D69 /* CreateIpGeoLocationOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A0413B2B268FB2003B1D69 /* CreateIpGeoLocationOperation.swift */; };
 		16D350052B01BC3900422298 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D350042B01BC3900422298 /* ServiceError.swift */; };
 		16D350062B01BC3900422298 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D350042B01BC3900422298 /* ServiceError.swift */; };
 		16D350072B01BC3900422298 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D350042B01BC3900422298 /* ServiceError.swift */; };
@@ -121,6 +133,10 @@
 		169D80022ADF891300E27E9B /* CombineURLServicesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineURLServicesUITests.swift; sourceTree = "<group>"; };
 		169D80042ADF891300E27E9B /* CombineURLServicesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineURLServicesUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		169D80112ADF8CC800E27E9B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		16A0412F2B242508003B1D69 /* IPLocationDataReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPLocationDataReducer.swift; sourceTree = "<group>"; };
+		16A041332B242A18003B1D69 /* IPLocationDataReducer+CoreDataExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IPLocationDataReducer+CoreDataExt.swift"; sourceTree = "<group>"; };
+		16A041372B263FAD003B1D69 /* CreateNetworkRequestGeoSearchViewOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNetworkRequestGeoSearchViewOperation.swift; sourceTree = "<group>"; };
+		16A0413B2B268FB2003B1D69 /* CreateIpGeoLocationOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateIpGeoLocationOperation.swift; sourceTree = "<group>"; };
 		16D350042B01BC3900422298 /* ServiceError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -192,15 +208,10 @@
 		160658242B02A1D200FDBA7C /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				160658D12B0F0A9300FDBA7C /* IPLocationService.swift */,
+				160658CD2B0DB13D00FDBA7C /* IPLocationDataPublisher.swift */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		1606582C2B02B0AA00FDBA7C /* CombineOperators */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CombineOperators;
 			sourceTree = "<group>";
 		};
 		1606582D2B02B1D000FDBA7C /* Extension */ = {
@@ -278,6 +289,8 @@
 			children = (
 				1606591B2B1D921900FDBA7C /* Debug */,
 				1608E9902B1DA63A0054A3BA /* UpdateReachabilityStatusOperation.swift */,
+				16A041372B263FAD003B1D69 /* CreateNetworkRequestGeoSearchViewOperation.swift */,
+				16A0413B2B268FB2003B1D69 /* CreateIpGeoLocationOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -293,6 +306,8 @@
 		168ECF8A2B2058080007E745 /* Reducers */ = {
 			isa = PBXGroup;
 			children = (
+				16A0412F2B242508003B1D69 /* IPLocationDataReducer.swift */,
+				16A041332B242A18003B1D69 /* IPLocationDataReducer+CoreDataExt.swift */,
 			);
 			path = Reducers;
 			sourceTree = "<group>";
@@ -363,7 +378,6 @@
 			isa = PBXGroup;
 			children = (
 				1606582D2B02B1D000FDBA7C /* Extension */,
-				1606582C2B02B0AA00FDBA7C /* CombineOperators */,
 				16D34FFA2B01A9D300422298 /* APIServices */,
 			);
 			path = APIServices;
@@ -372,9 +386,7 @@
 		16D34FFA2B01A9D300422298 /* APIServices */ = {
 			isa = PBXGroup;
 			children = (
-				160658CD2B0DB13D00FDBA7C /* IPLocationDataPublisher.swift */,
 				16D350042B01BC3900422298 /* ServiceError.swift */,
-				160658D12B0F0A9300FDBA7C /* IPLocationService.swift */,
 			);
 			path = APIServices;
 			sourceTree = "<group>";
@@ -523,6 +535,7 @@
 				160658BD2B0A714100FDBA7C /* GeoSearchViewModel.swift in Sources */,
 				160658D22B0F0A9300FDBA7C /* IPLocationService.swift in Sources */,
 				16D350052B01BC3900422298 /* ServiceError.swift in Sources */,
+				16A0413C2B268FB2003B1D69 /* CreateIpGeoLocationOperation.swift in Sources */,
 				1606591D2B1D931800FDBA7C /* FetchAndDescribeDataOperation.swift in Sources */,
 				160658C92B0C601400FDBA7C /* IPLocation.swift in Sources */,
 				160658302B02B31800FDBA7C /* URLRequest-Ext.swift in Sources */,
@@ -530,12 +543,15 @@
 				1606590B2B1AE7E200FDBA7C /* NoConnectView.swift in Sources */,
 				1606590F2B1AE8EF00FDBA7C /* NoConnectViewModel.swift in Sources */,
 				160658F12B197A0100FDBA7C /* NRCommon.swift in Sources */,
+				16A041342B242A18003B1D69 /* IPLocationDataReducer+CoreDataExt.swift in Sources */,
 				1608E9912B1DA63A0054A3BA /* UpdateReachabilityStatusOperation.swift in Sources */,
 				160658B92B0A710D00FDBA7C /* GeoSearchView.swift in Sources */,
+				16A041382B263FAD003B1D69 /* CreateNetworkRequestGeoSearchViewOperation.swift in Sources */,
 				160658DB2B11AA0900FDBA7C /* IpGeoLocationGenericNode.swift in Sources */,
 				169D7FE32ADF891200E27E9B /* CombineURLServicesApp.swift in Sources */,
 				160658D72B11A83100FDBA7C /* IpGeoLocationGenericCellView.swift in Sources */,
 				169D80122ADF8CC800E27E9B /* AppDelegate.swift in Sources */,
+				16A041302B242508003B1D69 /* IPLocationDataReducer.swift in Sources */,
 				160658332B02B31800FDBA7C /* URLSession-Ext.swift in Sources */,
 				169D7FEF2ADF891300E27E9B /* CombineURLServices.xcdatamodeld in Sources */,
 				160658FD2B197A0100FDBA7C /* NetworkReachability.swift in Sources */,
@@ -549,6 +565,7 @@
 				16D350062B01BC3900422298 /* ServiceError.swift in Sources */,
 				160658D32B0F0A9300FDBA7C /* IPLocationService.swift in Sources */,
 				160658312B02B31800FDBA7C /* URLRequest-Ext.swift in Sources */,
+				16A0413D2B268FB2003B1D69 /* CreateIpGeoLocationOperation.swift in Sources */,
 				1606591E2B1D931800FDBA7C /* FetchAndDescribeDataOperation.swift in Sources */,
 				160658BE2B0A714100FDBA7C /* GeoSearchViewModel.swift in Sources */,
 				160658CF2B0DB13D00FDBA7C /* IPLocationDataPublisher.swift in Sources */,
@@ -556,12 +573,15 @@
 				1606590C2B1AE7E200FDBA7C /* NoConnectView.swift in Sources */,
 				160659102B1AE8EF00FDBA7C /* NoConnectViewModel.swift in Sources */,
 				160658F22B197A0100FDBA7C /* NRCommon.swift in Sources */,
+				16A041352B242A18003B1D69 /* IPLocationDataReducer+CoreDataExt.swift in Sources */,
 				1608E9922B1DA63A0054A3BA /* UpdateReachabilityStatusOperation.swift in Sources */,
 				160658BA2B0A710D00FDBA7C /* GeoSearchView.swift in Sources */,
+				16A041392B263FAD003B1D69 /* CreateNetworkRequestGeoSearchViewOperation.swift in Sources */,
 				160658DE2B159A2700FDBA7C /* CombineURLServices.xcdatamodeld in Sources */,
 				160658D82B11A83100FDBA7C /* IpGeoLocationGenericCellView.swift in Sources */,
 				160658DC2B11AA0900FDBA7C /* IpGeoLocationGenericNode.swift in Sources */,
 				160658342B02B31800FDBA7C /* URLSession-Ext.swift in Sources */,
+				16A041312B242508003B1D69 /* IPLocationDataReducer.swift in Sources */,
 				169D80132ADF8CC800E27E9B /* AppDelegate.swift in Sources */,
 				169D7FF92ADF891300E27E9B /* CombineURLServicesTests.swift in Sources */,
 				160658FE2B197A0100FDBA7C /* NetworkReachability.swift in Sources */,
@@ -572,15 +592,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16A0413A2B263FAD003B1D69 /* CreateNetworkRequestGeoSearchViewOperation.swift in Sources */,
 				16D350072B01BC3900422298 /* ServiceError.swift in Sources */,
 				160658322B02B31800FDBA7C /* URLRequest-Ext.swift in Sources */,
 				160658352B02B31800FDBA7C /* URLSession-Ext.swift in Sources */,
+				16A041362B242A18003B1D69 /* IPLocationDataReducer+CoreDataExt.swift in Sources */,
 				1606590D2B1AE7E200FDBA7C /* NoConnectView.swift in Sources */,
 				169D80142ADF8CC800E27E9B /* AppDelegate.swift in Sources */,
 				169D80052ADF891300E27E9B /* CombineURLServicesUITestsLaunchTests.swift in Sources */,
 				160658F32B197A0100FDBA7C /* NRCommon.swift in Sources */,
 				160658DD2B11AA0900FDBA7C /* IpGeoLocationGenericNode.swift in Sources */,
 				160658D92B11A83100FDBA7C /* IpGeoLocationGenericCellView.swift in Sources */,
+				16A0413E2B268FB2003B1D69 /* CreateIpGeoLocationOperation.swift in Sources */,
 				1606591F2B1D931800FDBA7C /* FetchAndDescribeDataOperation.swift in Sources */,
 				160658BF2B0A714100FDBA7C /* GeoSearchViewModel.swift in Sources */,
 				160658CB2B0C601400FDBA7C /* IPLocation.swift in Sources */,
@@ -592,6 +615,7 @@
 				160658D42B0F0A9300FDBA7C /* IPLocationService.swift in Sources */,
 				160659112B1AE8EF00FDBA7C /* NoConnectViewModel.swift in Sources */,
 				160658DF2B159A2700FDBA7C /* CombineURLServices.xcdatamodeld in Sources */,
+				16A041322B242508003B1D69 /* IPLocationDataReducer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

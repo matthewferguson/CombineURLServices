@@ -21,7 +21,7 @@ final class FetchAndDescribeDataOperation: Operation {
         guard !isCancelled else { return }
         
         let managedContext =  DataFlowFunnel.shared.getPersistentContainerRef().viewContext
-        
+        print( "--------------------------------------------------------")
         print("Framework Context PersistentContainer viewContext ConcurrencyType: ")
         switch (managedContext.concurrencyType){
         case .mainQueueConcurrencyType:
@@ -38,6 +38,7 @@ final class FetchAndDescribeDataOperation: Operation {
         let fetchRequest = NSFetchRequest<ReachabilityStatus>(entityName: "ReachabilityStatus")
         managedContext1.performAndWait {
             do {
+                print( "--------------------------------------------------------")
                 print("Framework description call all ReachabilityStatus description")
                 let statusCollection = try managedContext1.fetch(fetchRequest)
                 for (index, singleStatus) in statusCollection.enumerated()
@@ -66,5 +67,30 @@ final class FetchAndDescribeDataOperation: Operation {
                 print("Failed to execute \(error), \(error.userInfo)")
             }
         }
+        
+        let managedContext2 =  DataFlowFunnel.shared.getPersistentContainerRef().viewContext
+        let fetchRequest2 = NSFetchRequest<NetworkRequest>(entityName: "NetworkRequest")
+        managedContext2.performAndWait {
+            do {
+                print( "--------------------------------------------------------")
+                print("Framework description call all NetworkRequest description")
+                let networkRequestCollection = try managedContext2.fetch(fetchRequest2)
+                for (index, networkRequest) in networkRequestCollection.enumerated()
+                {
+                    print("------ START: Network Request ----------")
+                    print("Network Request at location index == \(index):")
+                    print("     networkRequest.timestamp == \(String(describing: networkRequest.timestamp))")
+                    print("     networkRequest.id == \(String(describing: networkRequest.id))" )
+                    print("     networkRequest.message == \(String(describing: networkRequest.message))")
+                    print("     networkRequest.type == \(String(describing: networkRequest.type))")
+                    print("     networkRequest.urlRequested == \(String(describing: networkRequest.urlRequested))")
+                }
+                print("------- END: Single Network Status -------")
+            }
+            catch let error as NSError {
+                print("Failed to execute \(error), \(error.userInfo)")
+            }
+        }
+        
     }
 }

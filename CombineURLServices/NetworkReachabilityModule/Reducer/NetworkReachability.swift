@@ -28,14 +28,11 @@ class NetworkReachability : NSObject {
         self.setupReachability()
     }
 
-    
     // MARK:- Reachability
     private func setupReachability() -> Void {
 
         do {
             self.reachability = try Reachability()
-            print("setupReachability(): - Reachability success")
-           // print(self.reachability?.connection)
         } catch {
             print("setupReachability(): - Could not initialize the Reachability")
         }
@@ -57,10 +54,9 @@ class NetworkReachability : NSObject {
     func startNotifier() {
         do {
             try self.reachability?.startNotifier()
-            print("Error:startNotifier: startNotifier()")
         }
         catch {
-            print("Error:startNotifier: startNotifier()")
+            print("Error: startNotifier()")
             return
         }
     }
@@ -76,16 +72,14 @@ class NetworkReachability : NSObject {
     func updateWhenReachable(_ localReachability: Reachability) {
         if localReachability.connection == .wifi {
             self.currentReachableId = kReachWiFi
-            print("updateWhenReachable: kReachWiFi :" + String(describing: self.currentReachableId))
         }
         else if localReachability.connection == .cellular {
             self.currentReachableId = kReachWWAN
-            print("updateWhenReachable: kReachWWAN :" + String(describing: self.currentReachableId))
         }
         else {
             self.currentReachableId = kUnReachable
-            print("updateWhenReachable: kUnReachable :" + String(describing: self.currentReachableId))
         }
+        
         // BUZ install CRUD Operation
         DataFlowFunnel.shared.addOperation(UpdateReachabilityStatusOperation(newStatus: self.currentReachableId))
         //DataFlowFunnel.shared.addOperation(FetchAndDescribeDataOperation())
@@ -93,9 +87,8 @@ class NetworkReachability : NSObject {
 
     
     func updateWhenNotReachable(_ localReachability: Reachability) {
+        
         self.currentReachableId = kUnReachable
-        print("updateWhenNotReachable: kUnReachable :" + String(describing: self.currentReachableId))
-        //dataController!.updateNetworkReachability(networkState: self.currentReachableId!)
         // BUZ install CRUD Operation
         DataFlowFunnel.shared.addOperation(UpdateReachabilityStatusOperation(newStatus: self.currentReachableId))
         //DataFlowFunnel.shared.addOperation(FetchAndDescribeDataOperation())

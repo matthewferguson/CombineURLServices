@@ -15,18 +15,22 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
     var refDataFlowFunnel:DataFlowFunnel = DataFlowFunnel.shared
     var myReachability: NetworkReachability = NetworkReachability()
-
+    var refIPLocationReducer: IPLocationDataReducer = IPLocationDataReducer()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
         self.refDataFlowFunnel.setModelName(to: "CombineURLServices" )
         self.refDataFlowFunnel.setTargetBundleIdentifier(bundleId: "com.matthewferguson.CombineURLServices")
         
-        removeAllUserDataOnInitialize()
+        // IPGeoLocationModule 
+        self.refIPLocationReducer.setupFetchControllersReducer()
         
+        
+        //DataFlowFunnel.shared.addOperation(FetchAndDescribeDataOperation())
+        removeAllUserDataOnInitialize()
         //DataFlowFunnel.shared.addOperation(FetchAndDescribeDataOperation())
         
         self.myReachability.startNotifier()
-        
         if  self.myReachability.currentReachableId == kReachWWAN {
             //DataFlowFunnel.shared.addOperation(FetchAndDescribeDataOperation())
         } else if self.myReachability.currentReachableId == kReachWiFi {
@@ -56,7 +60,21 @@ class AppDelegate: NSObject, UIApplicationDelegate {
                     try moc.save()
                 }
             } catch let error as NSError {
-                print("Could not execute AppDelegate::fetchRequestUser. \(error), \(error.userInfo)")
+                print("Could not execute AppDelegate::removeAllUserDataOnInitialize::ReachabilityStatus. \(error), \(error.userInfo)")
+            }
+        }
+        
+        let moc2 = DataFlowFunnel.shared.getPersistentContainerRef().viewContext
+        let fetchRequestUser2 : NSFetchRequest<NetworkRequest> = NetworkRequest.fetchRequest()
+        moc2.performAndWait {
+            do{
+                let resultsArray2:Array<NetworkRequest> = try fetchRequestUser2.execute()
+                for user in resultsArray2 {
+                    moc2.delete(user)
+                    try moc2.save()
+                }
+            } catch let error as NSError {
+                print("Could not execute AppDelegate::removeAllUserDataOnInitialize:NetworkRequest. \(error), \(error.userInfo)")
             }
         }
     }

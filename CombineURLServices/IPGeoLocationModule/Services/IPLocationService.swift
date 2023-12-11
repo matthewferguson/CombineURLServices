@@ -9,6 +9,8 @@ import Foundation
 import Combine
 
 public struct IPLocationService {
+    
+    //below commented out for future - XCUnit, XCUITest
 //    private var url: URL {
 //        urlComponents.url!
 //    }
