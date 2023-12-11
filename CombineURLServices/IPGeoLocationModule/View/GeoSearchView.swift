@@ -2,7 +2,7 @@
 //  GeoSearchView.swift
 //  CombineURLServices
 //
-//  Created by Matthew Ferguson on 11/19/23.
+//  Created by Matthew Ferguson
 //
 
 import SwiftUI
@@ -13,6 +13,10 @@ struct GeoSearchView: View {
     @StateObject private var viewModel = GeoSearchViewModel()
     var body: some View {
         VStack {
+            Spacer()
+            Text("IP Geo Location Check")
+                .font(.title)
+            Spacer()
             HStack {
                 TextField("Input IP address", text: $viewModel.ipAddressInput)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -24,7 +28,7 @@ struct GeoSearchView: View {
             Button("Scan") {
                 Task {
                     viewModel.managedIpGeoLocations.removeAll()
-                    viewModel.fetchIpGeoLocation()
+                    viewModel.requestIpGeoServices()
                 }
             }
             .buttonStyle(.borderedProminent)

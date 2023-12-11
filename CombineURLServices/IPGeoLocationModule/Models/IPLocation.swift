@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct IPLocation: Codable {
+struct IPLocation: Codable { 
     var id: String?
     var status: String?
     var message: String?

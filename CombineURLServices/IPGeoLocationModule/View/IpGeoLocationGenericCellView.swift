@@ -2,7 +2,7 @@
 //  IpGeoLocationGenericCellView.swift
 //  CombineURLServices
 //
-//  Created by Matthew Ferguson on 11/24/23.
+//  Created by Matthew Ferguson
 //
 
 import Foundation
