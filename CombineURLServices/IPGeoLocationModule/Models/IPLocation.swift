@@ -2,12 +2,13 @@
 //  IPLocation.swift
 //  CombineURLServices
 //
-//  Matthew Ferguson on 11/13/23.
+//  Matthew Ferguson
 //
 
 import Foundation
 
 struct IPLocation: Codable { 
+    
     var id: String?
     var status: String?
     var message: String?

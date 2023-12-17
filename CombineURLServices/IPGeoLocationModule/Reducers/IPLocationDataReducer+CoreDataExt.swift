@@ -37,10 +37,15 @@ extension IPLocationDataReducer: NSFetchedResultsControllerDelegate
                 switch anObject {
                     case let insertedServiceRequest as NetworkRequest:
                         switch insertedServiceRequest.type {
-                            case "iplookup":
+                        case NetworkRequestType.geosearch.rawValue: // BUZ //1: // 1 == geosearch
                                 if let url = insertedServiceRequest.urlRequested {
-                                    Task {
-                                        self.fetchIpGeoLocation(ipAddressInput: url)
+                                    if let tempId = insertedServiceRequest.id {
+                                        Task {
+                                            self.fetchIpGeoLocation(ipAddressInput: url,
+                                                                    ident: tempId )
+                                        }
+                                    } else {
+                                        // Send an error packet
                                     }
                                 }
                             break
@@ -54,6 +59,32 @@ extension IPLocationDataReducer: NSFetchedResultsControllerDelegate
             break
             // ****** UPDATE *******
             case .update:
+                switch anObject {
+                    case let insertedServiceRequest as NetworkRequest:
+                        switch insertedServiceRequest.type {
+                            case NetworkRequestType.geosearch.rawValue: // BUZ //1 /*geosearch*/ :
+                                if NetworkRequestStatus.success.rawValue /* // BUZ //4 /success*/ == insertedServiceRequest.status {
+                                    print("HHHHHH success change = \(String(describing:insertedServiceRequest.id?.uuidString))")
+                                    Task {
+                                        // log the submitted geosearch
+                                        self.updateSuccessfulGeoSearchServiceNetworkRequest(withid: insertedServiceRequest.id! )
+                                    }
+                                }
+                                else if NetworkRequestStatus.delete.rawValue /*5*/ /*delete*/ == insertedServiceRequest.status {
+                                    print("JJJJJJ delete change = \(String(describing:insertedServiceRequest.id?.uuidString))")
+                                    Task {
+                                        // log the deletion action.
+                                        DataFlowFunnel.shared.addOperation( DeleteIpGeoLocationNetworkRequestOperation(withid: insertedServiceRequest.id! ) )
+                                    }
+                            }
+                            break
+                            default:
+                            break
+                        }
+                    break
+                    default:
+                    break
+                }
             break
             // ****** DELETE *******
             case .delete:

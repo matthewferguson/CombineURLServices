@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "dataflowfunnelcd",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/matthewferguson/DataFlowFunnelCD.git",
+      "state" : {
+        "revision" : "99a634dc9dd94005827ebf07eef630f6ea17568c",
+        "version" : "1.3.0"
+      }
+    },
+    {
+      "identity" : "reachability.swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ashleymills/Reachability.swift.git",
+      "state" : {
+        "revision" : "c01bbdf2d633cf049ae1ed1a68a2020a8bda32e2",
+        "version" : "5.1.0"
+      }
+    }
+  ],
+  "version" : 2
+}
