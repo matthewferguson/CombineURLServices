@@ -51,8 +51,11 @@ class IPLocationDataReducer : NSObject {
         }
     }
 
-    
-    public func fetchIpGeoLocation(ipAddressInput:String) {
+    public func updateSuccessfulGeoSearchServiceNetworkRequest(withid: UUID) {
+        DataFlowFunnel.shared.addOperation( DeleteIpGeoLocationNetworkRequestOperation(withid: withid) )
+    }
+
+    public func fetchIpGeoLocation(ipAddressInput:String , ident: UUID ) {
         
             let queryUrl = URL(string: "http://ip-api.com/json/" + ipAddressInput)!
             self.ipLocationService.publisher(url: queryUrl)
@@ -71,8 +74,9 @@ class IPLocationDataReducer : NSObject {
                         }
                     },
                     receiveValue: { ipgeolocation in
-                        //print("\n ------- fetchIpGeoLocation() Data received ------\n \(ipgeolocation.debugDescription)\n\n -------\n \(type(of: ipgeolocation))")
-                        DataFlowFunnel.shared.addOperation(CreateIpGeoLocationOperation(newIpLocation: ipgeolocation))
+                        DataFlowFunnel.shared.addOperation(
+                            CreateIpGeoLocationOperation(newIpLocation: ipgeolocation, ident: ident)
+                        )
                     })
                 .store(in: &self.cancellable)
     }

@@ -11,10 +11,12 @@ import DataFlowFunnelCD
 
 final class CreateIpGeoLocationOperation: Operation {
     
-    var newIpLocation: IPLocation = IPLocation()
+    private var newIpLocation: IPLocation = IPLocation()
+    private var requestID: UUID = UUID()
     
-    init( newIpLocation:IPLocation ) {
+    init( newIpLocation:IPLocation, ident: UUID ) {
         self.newIpLocation = newIpLocation
+        self.requestID = ident
         super.init()
     }
 
@@ -44,6 +46,9 @@ final class CreateIpGeoLocationOperation: Operation {
         managedContext.performAndWait {
             do {
                 try managedContext.save()
+                DataFlowFunnel.shared.addOperation(
+                    UpdateIpGeoLocationOperation(withid: self.requestID, withstate: 4 /*success*/)
+                )
             } catch let error as NSError {
                 print("Error on saving the CreateNetworkRequestGeoSearchViewOperation MO: == \(error),\(error.userInfo)")
             }

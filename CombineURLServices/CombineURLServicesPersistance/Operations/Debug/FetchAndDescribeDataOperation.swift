@@ -81,7 +81,7 @@ final class FetchAndDescribeDataOperation: Operation {
                     print("Network Request at location index == \(index):")
                     print("     networkRequest.timestamp == \(String(describing: networkRequest.timestamp))")
                     print("     networkRequest.id == \(String(describing: networkRequest.id))" )
-                    print("     networkRequest.message == \(String(describing: networkRequest.message))")
+                    print("     networkRequest.status == \(String(describing: networkRequest.status))")
                     print("     networkRequest.type == \(String(describing: networkRequest.type))")
                     print("     networkRequest.urlRequested == \(String(describing: networkRequest.urlRequested))")
                 }

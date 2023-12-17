@@ -22,6 +22,8 @@ extension GeoSearchView
         
         private var refDataFlowFunnel:DataFlowFunnel = DataFlowFunnel.shared
     
+        //MARK: - Setup data fetchcontrollers
+        
         fileprivate lazy var fetchIpGeoLocationRequestController: NSFetchedResultsController<IpGeoLocation> = {
             let fetchIpGeoLocations: NSFetchRequest<IpGeoLocation> = IpGeoLocation.fetchRequest()
             
@@ -55,9 +57,6 @@ extension GeoSearchView
             fetchAllReachabilityStatusRequest.delegate = self
             return fetchAllReachabilityStatusRequest
         }()
-
-        
-        
         
         func setupFetchControllers() {
             
@@ -95,9 +94,12 @@ extension GeoSearchView
             }
         }
         
-        
+        // Start the ip search with a decoupled request. type is geosearch.
         public func requestIpGeoServices() {
-            DataFlowFunnel.shared.addOperation(CreateNetworkRequestGeoSearchViewOperation(newIpAddress: ipAddressInput, typeofrequest: String("iplookup")))
+            DataFlowFunnel.shared.addOperation( 
+                CreateNetworkRequestGeoSearchViewOperation(newIpAddress: ipAddressInput,
+                                                           typeofrequest: NetworkRequestType.geosearch.rawValue )
+            )
         }
 
         
@@ -191,14 +193,17 @@ extension GeoSearchView
                     self.managedIpGeoLocations.append(ipLocNode)
                 }
             }
+            
+
         }
-          
-        //MARK: - NSFetchedResultsControllerDelegate Supported Callback
-        
+         
         private func setNetworkStatus(to: Bool) -> Void {
             self.networkNotAvailable = to
         }
-    
+        
+        
+        //MARK: - NSFetchedResultsControllerDelegate Supported Callback
+
         nonisolated func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
             
         }
