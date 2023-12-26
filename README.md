@@ -1,5 +1,5 @@
 # CombineURLServices
-Please click on this repo "starred" button as feedback/community reward.  More stars creates a higher in search ranking and more views can teach this Mobile REDUX Architecture.  
+Please click on this github repo "star" button as feedback/community reward.  More stars creates a higher in search ranking and more views can teach this Mobile REDUX Architecture.  
 
 iOS Code Challenge to demonstrate the use of Combine URLSession, Restful API, Core Data, and background processing within a Mobile REDUX Architecture.  This solution uses Reducers, Core Data, SwiftUI, and struct View MVVM to manage the data flow and business logic needs for the Use Cases listed below.  This architecture will decouple the data flow from the SwiftUI views and will eliminate the dependencies on Singletons and tightly coupled delegate use.  SwiftUI uses structs (by value, not by reference) and refreshes to update to a new state.  Unlike the UIKit View Controller classes, SwiftUI structs are temporary and the use of delegates and singletons can be risky to implement.
 
