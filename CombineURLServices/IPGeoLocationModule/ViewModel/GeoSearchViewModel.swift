@@ -80,13 +80,7 @@ extension GeoSearchView
             
             do {
                 try self.fetchIpGeoLocationRequestController.performFetch()
-                let ipGeoLocationCollection = self.fetchIpGeoLocationRequestController.fetchedObjects!
-                if ipGeoLocationCollection.count > 0 {
-                    // future check for timestamp refresh
-//                    if let networkReachMO = ipGeoLocationCollection.first {
-//                        
-//                    }
-                }
+                _ = self.fetchIpGeoLocationRequestController.fetchedObjects!
             } catch {
                 // error popup?
                 let fetchError = error as NSError
@@ -105,6 +99,8 @@ extension GeoSearchView
         
         private func processSuccessfulIpGeoPacket(ipgeolocation: IpGeoLocation) {
 
+            managedIpGeoLocations.removeAll()
+            
             if let status = ipgeolocation.status {
                 if status == "fail" {
                     let ipLocNode = IpGeoLocationGenericNode(ipLocationItem: "status", value: status)
@@ -246,6 +242,15 @@ extension GeoSearchView
                 break
                 // .update ------------------------
                 case .update:
+                    switch anObject {
+                        case let updatedIpGeoLocation as IpGeoLocation:
+                            Task{
+                                await processSuccessfulIpGeoPacket(ipgeolocation: updatedIpGeoLocation)
+                            }
+                        break
+                        default:
+                        break
+                    }
                 break
                 //  .move ------------------------
                 case .move:
