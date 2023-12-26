@@ -125,18 +125,38 @@ extension GeoSearchView
             
             if ipgeolocation.status != "fail" {
                 
-                if let message = ipgeolocation.message {
+                if let query = ipgeolocation.query {
+                    let ipLocNode = IpGeoLocationGenericNode(ipLocationItem: "query", value: query)
+                    self.managedIpGeoLocations.append(ipLocNode)
+                }
+                
+                if let message = ipgeolocation.message, ipgeolocation.message != String() {
                     let ipLocNode = IpGeoLocationGenericNode(ipLocationItem: "message", value: message)
                     self.managedIpGeoLocations.append(ipLocNode)
                 }
                 
-                if let country = ipgeolocation.country {
-                    let ipLocNode = IpGeoLocationGenericNode(ipLocationItem: "country", value: country)
+                if let timezone = ipgeolocation.timezone {
+                    let ipLocNode = IpGeoLocationGenericNode(ipLocationItem: "timezone", value: timezone)
+                    self.managedIpGeoLocations.append(ipLocNode)
+                }
+
+                if let isp = ipgeolocation.isp {
+                    let ipLocNode = IpGeoLocationGenericNode(ipLocationItem: "isp", value: isp)
                     self.managedIpGeoLocations.append(ipLocNode)
                 }
                 
-                if let countryCode = ipgeolocation.countryCode {
-                    let ipLocNode = IpGeoLocationGenericNode(ipLocationItem: "countryCode", value: countryCode)
+                if let org = ipgeolocation.org {
+                    let ipLocNode = IpGeoLocationGenericNode(ipLocationItem: "org", value: org)
+                    self.managedIpGeoLocations.append(ipLocNode)
+                }
+
+                if let city = ipgeolocation.city {
+                    let ipLocNode = IpGeoLocationGenericNode(ipLocationItem: "city", value: city)
+                    self.managedIpGeoLocations.append(ipLocNode)
+                }
+                
+                if let zip = ipgeolocation.zip {
+                    let ipLocNode = IpGeoLocationGenericNode(ipLocationItem: "zip", value: zip)
                     self.managedIpGeoLocations.append(ipLocNode)
                 }
                 
@@ -150,18 +170,13 @@ extension GeoSearchView
                     self.managedIpGeoLocations.append(ipLocNode)
                 }
                 
-                if let city = ipgeolocation.city {
-                    let ipLocNode = IpGeoLocationGenericNode(ipLocationItem: "city", value: city)
+                if let country = ipgeolocation.country {
+                    let ipLocNode = IpGeoLocationGenericNode(ipLocationItem: "country", value: country)
                     self.managedIpGeoLocations.append(ipLocNode)
                 }
                 
-                if let query = ipgeolocation.query {
-                    let ipLocNode = IpGeoLocationGenericNode(ipLocationItem: "query", value: query)
-                    self.managedIpGeoLocations.append(ipLocNode)
-                }
-                
-                if let zip = ipgeolocation.zip {
-                    let ipLocNode = IpGeoLocationGenericNode(ipLocationItem: "zip", value: zip)
+                if let countryCode = ipgeolocation.countryCode {
+                    let ipLocNode = IpGeoLocationGenericNode(ipLocationItem: "countryCode", value: countryCode)
                     self.managedIpGeoLocations.append(ipLocNode)
                 }
                 
@@ -174,20 +189,6 @@ extension GeoSearchView
                 let ipLocNodeLON = IpGeoLocationGenericNode(ipLocationItem: "lon", value: String(lon))
                 self.managedIpGeoLocations.append(ipLocNodeLON)
                 
-                if let timezone = ipgeolocation.timezone {
-                    let ipLocNode = IpGeoLocationGenericNode(ipLocationItem: "timezone", value: timezone)
-                    self.managedIpGeoLocations.append(ipLocNode)
-                }
-                
-                if let isp = ipgeolocation.isp {
-                    let ipLocNode = IpGeoLocationGenericNode(ipLocationItem: "isp", value: isp)
-                    self.managedIpGeoLocations.append(ipLocNode)
-                }
-                
-                if let org = ipgeolocation.org {
-                    let ipLocNode = IpGeoLocationGenericNode(ipLocationItem: "org", value: org)
-                    self.managedIpGeoLocations.append(ipLocNode)
-                }
             }
             
 

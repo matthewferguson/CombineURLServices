@@ -26,8 +26,7 @@ final class UpdateIpGeoLocationOperation: Operation {
     private var localWithMessage: String  = String()
     private var localWithIpGeoLocation: IpGeoLocation = IpGeoLocation()
     
-    public init(withIpGeoLocation: IpGeoLocation, withMessage: String) {
-        self.localWithMessage = withMessage
+    public init(withIpGeoLocation: IpGeoLocation) {
         self.localWithIpGeoLocation = withIpGeoLocation
         super.init()
     }
@@ -37,6 +36,7 @@ final class UpdateIpGeoLocationOperation: Operation {
         let managedContext =  DataFlowFunnel.shared.getPersistentContainerRef().viewContext
         managedContext.performAndWait {
             do {
+                self.localWithMessage = self.localWithIpGeoLocation.message ?? String()
                 localWithIpGeoLocation.setValue(self.localWithMessage, forKey: "message")
                 try managedContext.save()
             }
