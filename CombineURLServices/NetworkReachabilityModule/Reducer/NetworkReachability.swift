@@ -79,8 +79,7 @@ class NetworkReachability : NSObject {
         else {
             self.currentReachableId = kUnReachable
         }
-        
-        // BUZ install CRUD Operation
+    
         DataFlowFunnel.shared.addOperation(UpdateReachabilityStatusOperation(newStatus: self.currentReachableId))
         //DataFlowFunnel.shared.addOperation(FetchAndDescribeDataOperation())
     }
@@ -89,7 +88,6 @@ class NetworkReachability : NSObject {
     func updateWhenNotReachable(_ localReachability: Reachability) {
         
         self.currentReachableId = kUnReachable
-        // BUZ install CRUD Operation
         DataFlowFunnel.shared.addOperation(UpdateReachabilityStatusOperation(newStatus: self.currentReachableId))
         //DataFlowFunnel.shared.addOperation(FetchAndDescribeDataOperation())
     }

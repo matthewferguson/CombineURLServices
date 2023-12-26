@@ -10,6 +10,8 @@ Use Cases and UI/UX Specifications.
 4. Restful API: https://ip-api.com/docs/api:json 
 5. Check, identify, and inform the user interface if the network is lost. Handle API search communication errors.  
 6. Search results display a dynamic list of returned data from ip-api.com services. 
+7. Call the ip-api with IP address in the current text field with a refresh rate of 5 minutes. 
+    Use the same persisted data on duplicate IP scan requests. 
 
 
 Solution Details (WIP)

@@ -10,8 +10,6 @@ import DataFlowFunnelCD
 
 final class FetchAndDescribeDataOperation: Operation {
     
-    var boatId: Int64 = 0
-    
     override init() {
         super.init()
     }

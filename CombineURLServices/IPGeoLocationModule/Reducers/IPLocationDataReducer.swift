@@ -51,9 +51,62 @@ class IPLocationDataReducer : NSObject {
         }
     }
 
+
     public func updateSuccessfulGeoSearchServiceNetworkRequest(withid: UUID) {
         DataFlowFunnel.shared.addOperation( DeleteIpGeoLocationNetworkRequestOperation(withid: withid) )
     }
+    
+        
+    public func processGeoSearchRequest(insertedServiceRequest: NetworkRequest) {
+
+        var operations:[Operation] = []
+        operations.append(DeleteOlderIpGeoLocationEntriesOperation())
+        DataFlowFunnel.shared.addOperations(operations, waitUntilFinished: true)
+        
+        if let checkUrl = insertedServiceRequest.urlRequested {
+            if checkUrl == String() {
+                /// the url being processed is an empty string from text field.
+                return
+            } else {
+                let managedContext =  DataFlowFunnel.shared.getPersistentContainerRef().viewContext
+                let fetchRequest = NSFetchRequest<IpGeoLocation>(entityName: "IpGeoLocation")
+                fetchRequest.predicate = NSPredicate(format: "query = %@", checkUrl)
+                managedContext.performAndWait {
+                    do {
+                        
+                        let existingSpecificIPCollection = try managedContext.fetch(fetchRequest)
+                        if let existingSpecificIPEntity = existingSpecificIPCollection.first {
+                            
+                            /// duplicate search ip within the refresh timeline
+                            let duplicateIpGeoLocationMessage:String = String("Duplicate IP scan request, reload")
+                            DataFlowFunnel.shared.addOperation (UpdateIpGeoLocationOperation(withIpGeoLocation: existingSpecificIPEntity,
+                                                                                             withMessage: duplicateIpGeoLocationMessage))
+                        }
+                        else{
+                            /// Start a new network request
+                            Task {
+                                if let url = insertedServiceRequest.urlRequested {
+                                    if let tempId = insertedServiceRequest.id {
+                                        self.fetchIpGeoLocation(ipAddressInput: url, ident: tempId)
+                                    } else {
+                                        // Send an error packet
+                                    }
+                                }
+                            }
+
+                        }
+                    } catch let error as NSError {
+                        print("processGeoSearchRequest: Failed to execute do conditional block \(error), \(error.userInfo)")
+                    }
+                }
+                
+            }
+        } else {
+            return
+        }
+    
+    }
+    
 
     public func fetchIpGeoLocation(ipAddressInput:String , ident: UUID ) {
         

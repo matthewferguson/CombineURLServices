@@ -59,6 +59,9 @@
 		1608E9912B1DA63A0054A3BA /* UpdateReachabilityStatusOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1608E9902B1DA63A0054A3BA /* UpdateReachabilityStatusOperation.swift */; };
 		1608E9922B1DA63A0054A3BA /* UpdateReachabilityStatusOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1608E9902B1DA63A0054A3BA /* UpdateReachabilityStatusOperation.swift */; };
 		1608E9932B1DA63A0054A3BA /* UpdateReachabilityStatusOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1608E9902B1DA63A0054A3BA /* UpdateReachabilityStatusOperation.swift */; };
+		161378E62B3A872400AB907D /* UpdateNetworkRequestOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161378E52B3A872400AB907D /* UpdateNetworkRequestOperation.swift */; };
+		161378E72B3A872400AB907D /* UpdateNetworkRequestOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161378E52B3A872400AB907D /* UpdateNetworkRequestOperation.swift */; };
+		161378E82B3A872400AB907D /* UpdateNetworkRequestOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161378E52B3A872400AB907D /* UpdateNetworkRequestOperation.swift */; };
 		169D7FE32ADF891200E27E9B /* CombineURLServicesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169D7FE22ADF891200E27E9B /* CombineURLServicesApp.swift */; };
 		169D7FE72ADF891300E27E9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 169D7FE62ADF891300E27E9B /* Assets.xcassets */; };
 		169D7FEA2ADF891300E27E9B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 169D7FE92ADF891300E27E9B /* Preview Assets.xcassets */; };
@@ -96,6 +99,9 @@
 		16D5C1892B2F9F07008F976C /* NetworkRequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D5C1882B2F9F07008F976C /* NetworkRequestType.swift */; };
 		16D5C18A2B2F9F07008F976C /* NetworkRequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D5C1882B2F9F07008F976C /* NetworkRequestType.swift */; };
 		16D5C18B2B2F9F07008F976C /* NetworkRequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D5C1882B2F9F07008F976C /* NetworkRequestType.swift */; };
+		16D5C18D2B315A4B008F976C /* DeleteOlderIpGeoLocationEntriesOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D5C18C2B315A4B008F976C /* DeleteOlderIpGeoLocationEntriesOperation.swift */; };
+		16D5C18E2B315A4B008F976C /* DeleteOlderIpGeoLocationEntriesOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D5C18C2B315A4B008F976C /* DeleteOlderIpGeoLocationEntriesOperation.swift */; };
+		16D5C18F2B315A4B008F976C /* DeleteOlderIpGeoLocationEntriesOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D5C18C2B315A4B008F976C /* DeleteOlderIpGeoLocationEntriesOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +140,7 @@
 		1606590E2B1AE8EF00FDBA7C /* NoConnectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoConnectViewModel.swift; sourceTree = "<group>"; };
 		1606591C2B1D931800FDBA7C /* FetchAndDescribeDataOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchAndDescribeDataOperation.swift; sourceTree = "<group>"; };
 		1608E9902B1DA63A0054A3BA /* UpdateReachabilityStatusOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateReachabilityStatusOperation.swift; sourceTree = "<group>"; };
+		161378E52B3A872400AB907D /* UpdateNetworkRequestOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateNetworkRequestOperation.swift; sourceTree = "<group>"; };
 		169D7FDF2ADF891200E27E9B /* CombineURLServices.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CombineURLServices.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		169D7FE22ADF891200E27E9B /* CombineURLServicesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineURLServicesApp.swift; sourceTree = "<group>"; };
 		169D7FE62ADF891300E27E9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -154,6 +161,7 @@
 		16D5C17F2B2EA047008F976C /* UpdateIpGeoLocationOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateIpGeoLocationOperation.swift; sourceTree = "<group>"; };
 		16D5C1842B2F9EE3008F976C /* NetworkRequestStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestStatus.swift; sourceTree = "<group>"; };
 		16D5C1882B2F9F07008F976C /* NetworkRequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestType.swift; sourceTree = "<group>"; };
+		16D5C18C2B315A4B008F976C /* DeleteOlderIpGeoLocationEntriesOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteOlderIpGeoLocationEntriesOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -307,9 +315,11 @@
 				1606591B2B1D921900FDBA7C /* Debug */,
 				1608E9902B1DA63A0054A3BA /* UpdateReachabilityStatusOperation.swift */,
 				16A041372B263FAD003B1D69 /* CreateNetworkRequestGeoSearchViewOperation.swift */,
+				161378E52B3A872400AB907D /* UpdateNetworkRequestOperation.swift */,
 				16A0413B2B268FB2003B1D69 /* CreateIpGeoLocationOperation.swift */,
 				16D5C1652B2E8CBF008F976C /* DeleteIpGeoLocationRequestOperation.swift */,
 				16D5C17F2B2EA047008F976C /* UpdateIpGeoLocationOperation.swift */,
+				16D5C18C2B315A4B008F976C /* DeleteOlderIpGeoLocationEntriesOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -570,9 +580,11 @@
 				160658CE2B0DB13D00FDBA7C /* IPLocationDataPublisher.swift in Sources */,
 				1606590B2B1AE7E200FDBA7C /* NoConnectView.swift in Sources */,
 				1606590F2B1AE8EF00FDBA7C /* NoConnectViewModel.swift in Sources */,
+				16D5C18D2B315A4B008F976C /* DeleteOlderIpGeoLocationEntriesOperation.swift in Sources */,
 				160658F12B197A0100FDBA7C /* NRCommon.swift in Sources */,
 				16A041342B242A18003B1D69 /* IPLocationDataReducer+CoreDataExt.swift in Sources */,
 				1608E9912B1DA63A0054A3BA /* UpdateReachabilityStatusOperation.swift in Sources */,
+				161378E62B3A872400AB907D /* UpdateNetworkRequestOperation.swift in Sources */,
 				160658B92B0A710D00FDBA7C /* GeoSearchView.swift in Sources */,
 				16A041382B263FAD003B1D69 /* CreateNetworkRequestGeoSearchViewOperation.swift in Sources */,
 				160658DB2B11AA0900FDBA7C /* IpGeoLocationGenericNode.swift in Sources */,
@@ -604,9 +616,11 @@
 				160658CA2B0C601400FDBA7C /* IPLocation.swift in Sources */,
 				1606590C2B1AE7E200FDBA7C /* NoConnectView.swift in Sources */,
 				160659102B1AE8EF00FDBA7C /* NoConnectViewModel.swift in Sources */,
+				16D5C18E2B315A4B008F976C /* DeleteOlderIpGeoLocationEntriesOperation.swift in Sources */,
 				160658F22B197A0100FDBA7C /* NRCommon.swift in Sources */,
 				16A041352B242A18003B1D69 /* IPLocationDataReducer+CoreDataExt.swift in Sources */,
 				1608E9922B1DA63A0054A3BA /* UpdateReachabilityStatusOperation.swift in Sources */,
+				161378E72B3A872400AB907D /* UpdateNetworkRequestOperation.swift in Sources */,
 				160658BA2B0A710D00FDBA7C /* GeoSearchView.swift in Sources */,
 				16A041392B263FAD003B1D69 /* CreateNetworkRequestGeoSearchViewOperation.swift in Sources */,
 				160658DE2B159A2700FDBA7C /* CombineURLServices.xcdatamodeld in Sources */,
@@ -631,6 +645,7 @@
 				16A0413A2B263FAD003B1D69 /* CreateNetworkRequestGeoSearchViewOperation.swift in Sources */,
 				16D350072B01BC3900422298 /* ServiceError.swift in Sources */,
 				160658322B02B31800FDBA7C /* URLRequest-Ext.swift in Sources */,
+				161378E82B3A872400AB907D /* UpdateNetworkRequestOperation.swift in Sources */,
 				160658352B02B31800FDBA7C /* URLSession-Ext.swift in Sources */,
 				16D5C18B2B2F9F07008F976C /* NetworkRequestType.swift in Sources */,
 				16D5C1682B2E8CBF008F976C /* DeleteIpGeoLocationRequestOperation.swift in Sources */,
@@ -643,6 +658,7 @@
 				160658DD2B11AA0900FDBA7C /* IpGeoLocationGenericNode.swift in Sources */,
 				16D5C1872B2F9EE3008F976C /* NetworkRequestStatus.swift in Sources */,
 				160658D92B11A83100FDBA7C /* IpGeoLocationGenericCellView.swift in Sources */,
+				16D5C18F2B315A4B008F976C /* DeleteOlderIpGeoLocationEntriesOperation.swift in Sources */,
 				16A0413E2B268FB2003B1D69 /* CreateIpGeoLocationOperation.swift in Sources */,
 				1606591F2B1D931800FDBA7C /* FetchAndDescribeDataOperation.swift in Sources */,
 				160658BF2B0A714100FDBA7C /* GeoSearchViewModel.swift in Sources */,

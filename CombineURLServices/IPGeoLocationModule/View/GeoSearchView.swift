@@ -18,7 +18,7 @@ struct GeoSearchView: View {
                 .font(.title)
             Spacer()
             HStack {
-                TextField("Input IP address", text: $viewModel.ipAddressInput)
+                TextField("e.g. 134.220.123.198", text: $viewModel.ipAddressInput)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .keyboardType(.decimalPad)
                     .multilineTextAlignment(.center)
