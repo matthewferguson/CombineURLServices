@@ -76,11 +76,7 @@ class IPLocationDataReducer : NSObject {
                         
                         let existingSpecificIPCollection = try managedContext.fetch(fetchRequest)
                         if let existingSpecificIPEntity = existingSpecificIPCollection.first {
-                            
-                            /// duplicate search ip within the refresh timeline
-                            let duplicateIpGeoLocationMessage:String = String("Duplicate IP scan request, reload")
-                            DataFlowFunnel.shared.addOperation (UpdateIpGeoLocationOperation(withIpGeoLocation: existingSpecificIPEntity,
-                                                                                             withMessage: duplicateIpGeoLocationMessage))
+                            DataFlowFunnel.shared.addOperation (UpdateIpGeoLocationOperation(withIpGeoLocation: existingSpecificIPEntity))
                         }
                         else{
                             /// Start a new network request

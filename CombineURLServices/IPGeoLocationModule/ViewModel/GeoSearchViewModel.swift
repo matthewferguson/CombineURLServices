@@ -130,7 +130,7 @@ extension GeoSearchView
                     self.managedIpGeoLocations.append(ipLocNode)
                 }
                 
-                if let message = ipgeolocation.message {
+                if let message = ipgeolocation.message, ipgeolocation.message != String() {
                     let ipLocNode = IpGeoLocationGenericNode(ipLocationItem: "message", value: message)
                     self.managedIpGeoLocations.append(ipLocNode)
                 }

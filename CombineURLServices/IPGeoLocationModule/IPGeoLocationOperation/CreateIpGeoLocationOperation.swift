@@ -47,7 +47,7 @@ final class CreateIpGeoLocationOperation: Operation {
             do {
                 try managedContext.save()
                 DataFlowFunnel.shared.addOperation(
-                    UpdateNetworkRequestOperation(withid: self.requestID,
+                    UpdateIpGeoLocationNetworkRequestOperation(withid: self.requestID,
                                                   withstate: NetworkRequestStatus.success.rawValue )
                 )
             } catch let error as NSError {

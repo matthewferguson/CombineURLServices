@@ -1,5 +1,5 @@
 //
-//  UpdateNetworkRequestOperation.swift
+//  UpdateIpGeoLocationNetworkRequestOperation.swift
 //  CombineURLServices
 //
 //  Created by Matthew Ferguson
@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 import DataFlowFunnelCD
 
-final class UpdateNetworkRequestOperation: Operation {
+final class UpdateIpGeoLocationNetworkRequestOperation: Operation {
     
     private var idToUpdate: UUID  = UUID()
     private var stateToUpdate: Int64 = 0
