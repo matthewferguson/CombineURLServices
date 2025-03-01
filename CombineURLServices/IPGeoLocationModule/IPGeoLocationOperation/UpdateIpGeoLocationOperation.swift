@@ -21,7 +21,7 @@ import DataFlowFunnelCD
  a refreshed data set for that IP address.
  */
 
-final class UpdateIpGeoLocationOperation: Operation {
+final class UpdateIpGeoLocationOperation: Operation, @unchecked Sendable {
     
     private var localWithMessage: String  = String()
     private var localWithIpGeoLocation: IpGeoLocation = IpGeoLocation()

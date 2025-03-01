@@ -10,6 +10,7 @@ import CoreData
 import Foundation
 
 struct GeoSearchView: View {
+    
     @StateObject private var viewModel = GeoSearchViewModel()
     var body: some View {
         VStack {

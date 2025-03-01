@@ -14,7 +14,7 @@ import Foundation
 import CoreData
 import DataFlowFunnelCD
 
-final class CreateNetworkRequestGeoSearchViewOperation: Operation {
+final class CreateNetworkRequestGeoSearchViewOperation: Operation, @unchecked Sendable {
     
     var newIPText:String = String() // ip text injection
     var setTypeOfRequest:Int64 = NetworkRequestType.geosearch.rawValue

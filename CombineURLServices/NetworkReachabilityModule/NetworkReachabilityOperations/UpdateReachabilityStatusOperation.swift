@@ -8,7 +8,7 @@ import Foundation
 import CoreData
 import DataFlowFunnelCD
 
-final class UpdateReachabilityStatusOperation: Operation {
+final class UpdateReachabilityStatusOperation: Operation, @unchecked Sendable {
     
     var newCurrentStatus: String = String()
     
