@@ -15,7 +15,7 @@ Use Cases and UI/UX Specifications.
 
 Solution Details (WIP)
 
-- Mobile REDUX Architecture using Core Data to decouple the data dependencies and remove the use of Singletons and callback delegates. 
+- Mobile Architecture, similar to REDUX, using Core Data to decouple the data dependencies and remove the use of Singletons and callback delegates. 
 - The use of Reducers (REDUX) and Core Data to provide a Data Flow that is decoupled from the struct views of SwiftUI. Allowing SwiftUI to be a temporary in-memory view as intended.
 - Use https://github.com/matthewferguson/DataFlowFunnelCD package to manage the Core Data contention issues that exist in older and newer versions of iOS SDKs.  Also, centralizes the flow of SQL Create and Updates (CRUD) using Operations.
 - Use of Swift Operations and Core Data Fetch Controllers to further decouple the SwiftUI MVVM and Event Driven Data Flow.  
