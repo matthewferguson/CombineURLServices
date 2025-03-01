@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 import DataFlowFunnelCD
 
-final class DeleteOlderIpGeoLocationEntriesOperation: Operation {
+final class DeleteOlderIpGeoLocationEntriesOperation: Operation, @unchecked Sendable {
     
     override init() {
         super.init()

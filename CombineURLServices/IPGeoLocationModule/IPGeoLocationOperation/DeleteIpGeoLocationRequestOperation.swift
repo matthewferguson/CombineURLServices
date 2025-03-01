@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 import DataFlowFunnelCD
 
-final class DeleteIpGeoLocationNetworkRequestOperation: Operation {
+final class DeleteIpGeoLocationNetworkRequestOperation: Operation, @unchecked Sendable {
     
     var id: UUID = UUID()
     

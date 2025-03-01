@@ -8,7 +8,7 @@ import Foundation
 import CoreData
 import DataFlowFunnelCD
 
-final class FetchAndDescribeDataOperation: Operation {
+final class FetchAndDescribeDataOperation: Operation, @unchecked Sendable {
     
     override init() {
         super.init()

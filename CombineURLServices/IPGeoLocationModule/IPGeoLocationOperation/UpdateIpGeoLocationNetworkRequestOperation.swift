@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 import DataFlowFunnelCD
 
-final class UpdateIpGeoLocationNetworkRequestOperation: Operation {
+final class UpdateIpGeoLocationNetworkRequestOperation: Operation, @unchecked Sendable {
     
     private var idToUpdate: UUID  = UUID()
     private var stateToUpdate: Int64 = 0
